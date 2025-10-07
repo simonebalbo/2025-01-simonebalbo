@@ -1,0 +1,2 @@
+column0 > 0
+column1 integer 10 <= x < 50

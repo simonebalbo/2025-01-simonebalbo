@@ -1,0 +1,2 @@
+column2 > 60
+column3 is integer 30 <= x < 42

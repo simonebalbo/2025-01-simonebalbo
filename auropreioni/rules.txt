@@ -1,0 +1,2 @@
+column0 multiple of 5
+column3 multiple of 3

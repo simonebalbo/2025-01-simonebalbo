@@ -1,0 +1,2 @@
+column0 > 0
+column4 multiple of 7

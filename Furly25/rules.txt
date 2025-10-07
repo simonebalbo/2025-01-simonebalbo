@@ -1,0 +1,2 @@
+column3 is integer 30 <= x < 42
+column4 multiple of 7
