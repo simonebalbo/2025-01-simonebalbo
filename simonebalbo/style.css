@@ -1,0 +1,253 @@
+/* === Inizi var === */
+
+
+:root {
+  /* Palette */
+  --bg: #F4F6F8;
+  --panel: #FFFFFF;
+  --text: #212B35;
+  --muted: #6B7280;
+  --accent: #95BF47;
+  --highlight: #FF6B35;
+  --border: #E5E7EB;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  
+  /* Testo */
+  --font-primary: 'Inter', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  
+  /* Spaziature */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  
+  /* raggio bordi tondi */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Ombre */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* === Layout=== */
+main {
+  max-width: 1200px;
+  margin: var(--space-8) auto;
+  padding: 0 var(--space-6);
+}
+
+h1 {
+  margin: 0 0 var(--space-2);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.subtitle {
+  margin: 0 0 var(--space-8);
+  color: var(--muted);
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+ .panel {
+   background: var(--panel);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   padding: var(--space-6);
+   margin: var(--space-6) 0;
+   box-shadow: var(--shadow-sm);
+   transition: all 0.2s ease;
+ }
+
+ .panel:hover {
+   box-shadow: var(--shadow-md);
+ }
+
+ /* Exp pannello con card in hover */
+ .panel:has(.cards.expanded) {
+   padding: var(--space-8);
+   box-shadow: var(--shadow-lg);
+ }
+
+/* === Grid syst x cards === */
+ .cards {
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   gap: 16px;
+   grid-auto-rows: 200px;
+   transition: grid-template-columns 0.4s ease, grid-auto-rows 0.4s ease;
+ }
+
+/* === Card singola === */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: visible;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+ .card h3 {
+   margin: 0 0 var(--space-3);
+   font-size: 1.125rem;
+   color: var(--text);
+   font-weight: 600;
+   text-align: center;
+   line-height: 1.4;
+ }
+
+ /* COntenuto x mod hover */
+ .hover-content {
+   opacity: 0;
+   transform: translateY(10px);
+   transition: all 0.3s ease;
+   position: relative;
+   margin-top: var(--space-3);
+   background: var(--text);
+   color: var(--panel);
+   padding: var(--space-4);
+   border-radius: var(--radius-md);
+   font-size: 0.75rem;
+   line-height: 1.5;
+   text-align: center;
+   pointer-events: none;
+   max-height: 0;
+   overflow: hidden;
+   box-shadow: var(--shadow-md);
+ }
+
+ .hover-content p {
+   margin: 0 0 6px 0;
+ }
+
+ .hover-content p:last-child {
+   margin-bottom: 0;
+ }
+
+ .hover-content strong {
+   color: var(--highlight);
+ }
+
+.card-values {
+  margin-top: 8px;
+  font-size: 17px; 
+  color: var(--muted);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* === Anim x hover === */
+.cards:hover .card {
+  opacity: 0.7;
+  transform: scale(0.5); 
+  transition: transform 0.5s cubic-bezier(0.25, 1.3, 0.5, 1), opacity 0.4s ease;
+}
+
+ .cards .card.active {
+   opacity: 1;
+   transform: scale(1.8) translateY(-12px);
+   box-shadow: var(--shadow-lg);
+   border-color: var(--highlight);
+   z-index: 2;
+   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+
+ .cards .card.active .card-values {
+   opacity: 1;
+   transform: translateY(0);
+ }
+
+
+ .card:hover .hover-content {
+   opacity: 1;
+   transform: translateY(0);
+   max-height: 200px;
+   transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+ }
+
+/* === Metrics x grigli  === */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.metric {
+  background: #141734;
+  border: 1px solid #25294a;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+ .metric-value {
+   font-size: 3rem;
+   font-weight: 700;
+   letter-spacing: -0.02em;
+   text-align: center;
+   width: 100%;
+   color: var(--text);
+   line-height: 1;
+ }
+
+ .metric-label {
+   margin-top: var(--space-2);
+   color: var(--muted);
+   font-size: 0.875rem;
+   font-weight: 500;
+   text-align: center;
+   width: 100%;
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+ }
+
+
+
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}

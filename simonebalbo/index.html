@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ex_01</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main id="app">
+      <h1>Media, Moda, Mediana e Deviazione Standard</h1>
+      <p class="subtitle">Leggere un dataset, filtrare secondo regole date, calcolare e rappresentare</p>
+
+      <section class="panel">
+        <div>
+          <p><strong>Regole</strong></p>
+          <ul>
+            <li>Colonna 3: Numero intero 30 ≤ x < 42</li>
+            <li>Colonna 0: Numero intero strettamente positivo </li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Cosa viene calcolato:</strong></p>
+          <ul>
+            <li>Media (Colonna 0)</li>
+            <li>Deviazione Standard (Colonna 1)</li>
+            <li>Moda (Colonna 2)</li>
+            <li>Mediana (Colonna 3)</li>
+            <li>Deviazione Standard (Colonna 1)</li>
+          </ul>
+        </div>
+      </section>
+
+
+      <section class="panel">
+        <div class="cards">
+
+             <!--med-->
+             <div class="card">
+              <h3>Media</h3>
+              <div class="metric-value" id="metric-mean-c0">—</div>
+              <div class="metric-label"> COLONNA 0</div>
+            </div>
+            
+
+          <!--devstd-->
+          <div class="card">
+            <h3>Deviazione Std</h3>
+            <canvas id="chart-col4" width="720" height="160"></canvas>
+            <div class="metric-label">COLONNA 1</div>
+          </div>
+
+          <!--moda-->
+          <div class="card">
+            <h3>Moda</h3>
+            <canvas id="chart-mode" width="720" height="160"></canvas>
+            <div class="metric-label">COLONNA 2</div>
+          </div>
+         
+
+
+          <!--medn-->
+          <div class="card">
+            <h3>Mediana</h3>
+            <canvas id="chart-col3" width="720" height="160"></canvas>
+            <div class="metric-label">COLONNA 3</div>
+          </div>
+
+             
+
+
+          <!--
+          NON TOCCARE IL DIV ANNIDATO SI ROMPONO I GRAFICI, esistono grazie a uno 
+              switch e toccare quell'id ne rompe la logica; x editare->java->case 4
+          -->
+          <div class="card">
+            <h3>Media e Dev Std</h3>
+            <div class="metric-value" id="metric-std-c1">—</div>
+            <div class="metric-label">COLONNA 4</div>
+          </div>
+
+       
+          
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+    <script src="./libraries/java.js"></script>
+    <script src="./sketch.js"></script>
+  </body>
+</html>
