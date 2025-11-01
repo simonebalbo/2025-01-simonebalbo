@@ -4,7 +4,7 @@ let table = null;
 let filtered = [];
 
 function preload() {
-  table = loadTable('/simonebalbo/dataset.csv', 'csv', 'header');
+  table = loadTable('simonebalbo/dataset.csv', 'csv', 'header');
 }
 
 function setup() {
